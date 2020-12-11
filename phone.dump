@@ -1,0 +1,128 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.15 (Ubuntu 10.15-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.15 (Ubuntu 10.15-0ubuntu0.18.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: phone; Type: TABLE; Schema: public; Owner: sgmk
+--
+
+CREATE TABLE public.phone (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    phone character varying NOT NULL,
+    firm character varying NOT NULL,
+    dep character varying NOT NULL
+);
+
+
+ALTER TABLE public.phone OWNER TO sgmk;
+
+--
+-- Name: phone_id_seq; Type: SEQUENCE; Schema: public; Owner: sgmk
+--
+
+CREATE SEQUENCE public.phone_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.phone_id_seq OWNER TO sgmk;
+
+--
+-- Name: phone_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sgmk
+--
+
+ALTER SEQUENCE public.phone_id_seq OWNED BY public.phone.id;
+
+
+--
+-- Name: phone id; Type: DEFAULT; Schema: public; Owner: sgmk
+--
+
+ALTER TABLE ONLY public.phone ALTER COLUMN id SET DEFAULT nextval('public.phone_id_seq'::regclass);
+
+
+--
+-- Data for Name: phone; Type: TABLE DATA; Schema: public; Owner: sgmk
+--
+
+COPY public.phone (id, name, phone, firm, dep) FROM stdin;
+1	Сергей	+79131384465	ОАО ХЗЧЁ	АСУТ
+2	Васили Иванович Чапель	+79121384465	ОАО ХЗЧЁ	ЗАПСИЗ
+3	Джесс Юрьевна Селезнева	+79511384465	ОАО ХЗ ЧОП	СТРОЛОЖИ
+4	Иосив Виссарионович Джугашвили	+79511383365	ЗАО "СССР"	Руководитель
+5	Огюстен Луи Коши	+79534383365	ОАО "МАТАН"	Основатель
+8	Замут	+89999920202	ОАО "Компас"	АЗИ
+9	Адик Алаизович	+76669346666	Скрытый персонаж	Секретный
+10	Семен	838383838	ПРОВАНН	АКУУ
+11	ПЕтр	99999999	ПААААА	КУУУУУ
+12	ыыыы	ыыыы	ыыы	ыыыы
+13	Василий Не Василий	+1455999383922	ХХЛСТН	укрп
+14	Антон Сигизмундович Вагнер	+99292929292	Семоно	МУзыки
+15	Антон Сигизмундович Вагнер	+99292929292	Семоно	МУзыки
+16	Максим	+0988899	АРПРООО	ВАПРО
+17	Вероника Васильевна	+73833930	Ванторак	АСУКК
+18	Игорь Мехеевич Карин	+78890033	ПАРУС	ФУНКК
+19	Петров ивано АНтонович	+723455222	ПАПАПАП	ВАКККК
+20	Глянцевый Петр Петрович	+8888822222	АААААА	ЫВЫВЫ
+21	Петр Анатольевич	+89999222	Караппп	Вант
+22	Иван Адамович	+88882222	Ммммм	УУуу
+23	Иван Адамович Смирнов	+88882222	Ммммм	УУуу
+\.
+
+
+--
+-- Name: phone_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sgmk
+--
+
+SELECT pg_catalog.setval('public.phone_id_seq', 23, true);
+
+
+--
+-- Name: phone PK_f35e6ee6c1232ce6462505c2b25; Type: CONSTRAINT; Schema: public; Owner: sgmk
+--
+
+ALTER TABLE ONLY public.phone
+    ADD CONSTRAINT "PK_f35e6ee6c1232ce6462505c2b25" PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
